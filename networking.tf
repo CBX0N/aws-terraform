@@ -15,7 +15,7 @@ resource "aws_subnet" "cbx_public_subnet" {
   availability_zone       = "us-east-1a"
 
   tags = {
-    Name = "dev-public"
+    Name = "$(var.environment)_public"
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_internet_gateway" "cbx_internet_gateway" {
   vpc_id = aws_vpc.cbx_vpc.id
 
   tags = {
-    Name = "dev-internet-gateway"
+    Name = "$(var.environment)_internet-gateway"
   }
 }
 
@@ -31,7 +31,7 @@ resource "aws_route_table" "cbx_public_route_table" {
   vpc_id = aws_vpc.cbx_vpc.id
 
   tags = {
-    Name = "dev-public-route-table"
+    Name = "$(var.environment)_public-route-table"
   }
 }
 
@@ -48,7 +48,7 @@ resource "aws_route_table_association" "cbx_route_table_association" {
 
 resource "aws_security_group" "cbx-security-group" {
   vpc_id = aws_vpc.cbx_vpc.id
-  name   = "dev-security-group"
+  name   = "$(var.environment)_security-group"
 
   ingress {
     from_port   = 0

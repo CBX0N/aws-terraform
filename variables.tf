@@ -1,3 +1,8 @@
+variable "environment" {
+  type    = string
+  default = "dev"
+}
+
 # ----- COMPUTE ----- #
 variable "host_os" {
   type    = string
@@ -11,5 +16,5 @@ variable "identity_file" {
 }
 variable "key_name" {
   type    = string
-  default  = "cbxkey"
+  default = "cbxkey"
 }
